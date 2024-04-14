@@ -15,7 +15,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
 
 parser = ArgumentParser()
 parser.add_argument('--dataset', default='WNUT2017', choices=['CoNLL2003', 'WNUT2017', 'ACE2004', 'ACE2005'], type=str)
-parser.add_argument('--model_name', default='Mixtral-8x7B-Instruct-v0.1', type=str) # Llama-2-70b-chat Qwen1.5-72B-Chat Mixtral-8x7B-Instruct-v0.1
+parser.add_argument('--model_name', default='Mixtral-8x7B-Instruct-v0.1', type=str)
 parser.add_argument('--mode', default='picl+icl', choices=['baseline', 'icl', 'picl+icl'], type=str)
 parser.add_argument('--use_bert', action='store_true')
 parser.add_argument('--picl_cnt', default=5, type=int)
@@ -23,7 +23,7 @@ parser.add_argument('--icl_cnt', default=10, type=int)
 parser.add_argument('--batch_cnt', default=16, type=int)
 args = parser.parse_args()
 
-model_name = args.model_name # Llama-2-70b-chat Qwen1.5-72B-Chat Mixtral-8x7B-Instruct-v0.1
+model_name = args.model_name
 dataset = args.dataset
 mode = args.mode
 use_bert = args.use_bert
@@ -45,7 +45,7 @@ elif mode == 'picl+icl':
 else:
     output_path = f"./data/{dataset}/{model_name}-{dataset}-{mode}-{picl_cnt}-shot.json"
 
-model_path = f'/data1/jgc/models/{model_name}/' # 模型地址
+model_path = f'/data1/jgc/models/{model_name}/'
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 llm = LLM(
     model=model_path, 
