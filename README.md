@@ -11,4 +11,14 @@ Please save your dataset in `data` folder. Note that CoNLL2003 and WNUT2017 are 
 
 ## Generation
 
+Please review `generate.py` for P-ICL and `utils.py` for prompts, and change some important parameters.
+```{bash}
+python generate.py --dataset your_dataset --mode your_mode --picl_cnt your_picl_cnt --icl_cnt your_icl_cnt
+```
+
 ## Evaluation
+
+Please review `eval.py` for computing entity-level F1 score.
+```{bash}
+python eval.py --label_path your_label_file_path --pred_path your_model_output_file_path
+```
