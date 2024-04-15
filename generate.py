@@ -11,7 +11,7 @@ from argparse import ArgumentParser
 
 from utils import Prompt, PointICL
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0,1' # set your GPUs
 
 parser = ArgumentParser()
 parser.add_argument('--dataset', default='WNUT2017', choices=['CoNLL2003', 'WNUT2017', 'ACE2004', 'ACE2005'], type=str)
@@ -45,7 +45,7 @@ elif mode == 'picl+icl':
 else:
     output_path = f"./data/{dataset}/{model_name}-{dataset}-{mode}-{picl_cnt}-shot.json"
 
-model_path = f'/data1/jgc/models/{model_name}/'
+model_path = '' # your_model_path
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 llm = LLM(
     model=model_path, 
